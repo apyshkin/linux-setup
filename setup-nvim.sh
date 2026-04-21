@@ -9,6 +9,12 @@ APPIMAGE_URL="https://github.com/neovim/neovim/releases/latest/download/nvim-lin
 
 echo "=== Neovim Setup ==="
 
+# Install ripgrep (required by snacks.nvim for live grep)
+if ! command -v rg &>/dev/null; then
+    echo "Installing ripgrep..."
+    sudo apt-get install -y ripgrep
+fi
+
 # Install Neovim AppImage
 mkdir -p "$NVIM_BIN_DIR"
 if [ -f "$NVIM_BIN" ]; then
